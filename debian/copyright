@@ -1,22 +1,49 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: template-repository
-Source: https://github.com/deepin-community/template-repository
+Upstream-Name: GNU Stow
+Upstream-Contact: bug-stow@gnu.org
+Source: https://ftp.gnu.org/gnu/stow/
 
 Files: *
-Copyright: 2023 Tsic404 <liuheng@deepin.org>
+Copyright: 1993, 1994, 1995, 1996 Bob Glickstein <bobg+stow@zanshin.com>
+           2000, 2001 Guillaume Morin <gmorin@gnu.org>
+           2007 Kahlil (Kal) Hodgson <kahlil@internode.on.net>
+           2011 Adam Spiers <stow@adamspiers.org>
+License: GPL-3+
+ On Debian systems, the full text of the GNU General Public License
+ Version 3 can be found in the file
+ '/usr/share/common-licenses/GPL-3'.
+
+Files: doc/stow.texi
+Copyright: 1993, 1994, 1995, 1996 Bob Glickstein <bobg+stow@zanshin.com>
+           2000, 2001 Guillaume Morin <gmorin@gnu.org>
+           2007 Kahlil (Kal) Hodgson <kahlil@internode.on.net>
+           2011 Adam Spiers <stow@adamspiers.org>
+License: manual
+ Permission is granted to make and distribute verbatim copies of this
+ manual provided the copyright notice and this permission notice are
+ preserved on all copies.
+ .
+ Permission is granted to process this file through TeX and print the
+ results, provided the printed document carries a copying permission
+ notice identical to this one except for the removal of this paragraph
+ (this paragraph not being relevant to the printed manual).
+ .
+ Permission is granted to copy and distribute modified versions of this
+ manual under the conditions for verbatim copying, provided also that the
+ section entitled ``GNU General Public License'' is included with the
+ modified manual, and provided that the entire resulting derived work is
+ distributed under the terms of a permission notice identical to this
+ one.
+ .
+ Permission is granted to copy and distribute translations of this manual
+ into another language, under the above conditions for modified versions,
+ except that this permission notice may be stated in a translation
+ approved by the Free Software Foundation.
+
+Files: debian/*
+Copyright: 2009, 2012, 2016 Chuan-kai Lin <cklin@debian.org>
+           2012 Kalle Olavi Niemitalo <kon@iki.fi>
 License: GPL-2+
- This package is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>
- .
- On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ On Debian systems, the full text of the GNU General Public License
+ Version 2 can be found in the file
+ '/usr/share/common-licenses/GPL-2'.

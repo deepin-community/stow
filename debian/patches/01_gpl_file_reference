@@ -1,0 +1,22 @@
+From: Chuan-kai Lin <cklin@debian.org>
+Date: Sat, 7 Sep 2019 16:03:49 -0700
+Subject: Update GPL-3 licence path on Debian systems
+
+Last-Update: 2019-09-07
+---
+ bin/stow.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/stow.in b/bin/stow.in
+index 4faa451..86c0ae1 100755
+--- a/bin/stow.in
++++ b/bin/stow.in
+@@ -418,7 +418,7 @@ parts of Stow's info manual, and then converted to POD format by Adam
+ Spiers.  The info manual contains the following notice, which, as it
+ says, applies to this manual page, too.  The text of the section
+ entitled "GNU General Public License" can be found in the file
+-F</usr/share/common-licenses/GPL> on any Debian GNU/Linux system.  If
++F</usr/share/common-licenses/GPL-3> on any Debian GNU/Linux system.  If
+ you don't have access to a Debian system, or the GPL is not there,
+ write to the Free Software Foundation, Inc., 59 Temple Place, Suite
+ 330, Boston, MA, 02111-1307, USA.

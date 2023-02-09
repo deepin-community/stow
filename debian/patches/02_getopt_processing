@@ -1,0 +1,72 @@
+From: Kalle Olavi Niemitalo <kon@iki.fi>
+Date: Sun, 8 Sep 2019 10:57:26 -0700
+Subject: Fix '--' getopt argument processing
+
+This patch makes stow process command-line arguments that appear after
+'--' as is customary for programs that use getopt.
+
+Origin: other, http://bugs.debian.org/681752
+Bug-Debian: http://bugs.debian.org/681752
+Reviewed-By: Chuan-kai Lin <cklin@debian.org>
+Last-Update: 2019-09-08
+---
+ bin/stow.in | 33 +++++++++++++++++++--------------
+ 1 file changed, 19 insertions(+), 14 deletions(-)
+
+diff --git a/bin/stow.in b/bin/stow.in
+index 86c0ae1..13ee74f 100755
+--- a/bin/stow.in
++++ b/bin/stow.in
+@@ -566,11 +566,25 @@ sub parse_options {
+     my @pkgs_to_stow   = ();
+     my $action = 'stow';
+ 
++    my @cli_args = @_;
++    my $remember_package_action = sub {
++        if ($action eq 'restow') {
++            push @pkgs_to_unstow, $_[0];
++            push @pkgs_to_stow, $_[0];
++        }
++        elsif ($action eq 'unstow') {
++            push @pkgs_to_unstow, $_[0];
++        }
++        else {
++            push @pkgs_to_stow, $_[0];
++        }
++    };
++
+     #$,="\n"; print @_,"\n"; # for debugging rc file
+ 
+     Getopt::Long::config('no_ignore_case', 'bundling', 'permute');
+     GetOptionsFromArray(
+-        \@_,
++        \@cli_args,
+         \%options,
+         'verbose|v:+', 'help|h', 'simulate|n|no',
+         'version|V', 'compat|p', 'dir|d=s', 'target|t=s',
+@@ -603,21 +617,12 @@ sub parse_options {
+         'R|restow'  => sub { $action = 'restow' },
+ 
+         # Handler for non-option arguments
+-        '<>' =>
+-        sub {
+-            if ($action eq 'restow') {
+-                push @pkgs_to_unstow, $_[0];
+-                push @pkgs_to_stow, $_[0];
+-            }
+-            elsif ($action eq 'unstow') {
+-                push @pkgs_to_unstow, $_[0];
+-            }
+-            else {
+-                push @pkgs_to_stow, $_[0];
+-            }
+-        },
++        '<>' => $remember_package_action,
+     ) or usage('');
+ 
++    # If GetOptions stopped at "--", process any remaining arguments.
++    $remember_package_action->($_) foreach @cli_args;
++
+     usage()   if $options{help};
+     version() if $options{version};
+ 
